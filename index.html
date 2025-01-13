@@ -2,18 +2,52 @@
 <html>
 <head>
   <title>GA4 Test Site</title>
-</head>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J8610TSKR0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8610TSKR0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-J8610TSKR0');
-</script>
+    gtag('config', 'G-J8610TSKR0');
+
+    // Function to send events with different parameters
+    function sendTestEvent(customerId, userTier, eventName) {
+      gtag('event', eventName, {
+        'customer_id': customerId,
+        'user_tier': userTier,
+        'item_category': 'test category'
+      });
+    }
+
+    function sendPageViewWithParams(pageType) {
+      gtag('event', 'page_view', {
+        'page_location': location.href,
+        'page_path': location.pathname,
+        'page_title': document.title,
+        'page_type': pageType
+      });
+    }
+
+  </script>
+</head>
 <body>
   <h1>Welcome to the GA4 Test Site</h1>
   <p>This is a test website for Google Analytics 4.</p>
-  <button onclick="gtag('event', 'test_button_click', { 'value': '1' });">Test Button</button>
+
+  <button onclick="sendTestEvent('12345', 'Gold', 'button_click_gold');">Test Button (Gold User)</button><br>
+  <button onclick="sendTestEvent('67890', 'Silver', 'button_click_silver');">Test Button (Silver User)</button><br>
+    <button onclick="sendPageViewWithParams('home_page')">Send page view with home page parameter</button><br>
+    <button onclick="sendPageViewWithParams('product_page')">Send page view with product page parameter</button><br>
+
+  <script>
+    sendPageViewWithParams('landing_page')
+  </script>
+
 </body>
 </html>
+
+<!-- // Get the customer ID from your application (e.g., from a data layer, cookie, or server-side rendering).
+const customerId = getCustomerId(); // Replace getCustomerId() with your actual logic
+
+// Add the customer ID to the event
+<button onclick="gtag('event', 'test_button_click', { 'customer_id': customerId, 'user_tier': 'Gold' });">Test Button</button> -->
