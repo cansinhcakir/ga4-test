@@ -4,51 +4,54 @@
   <title>GA4 Test Site</title>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8610TSKR0"></script>
   <script>
+    // Initialize the dataLayer
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+
+    // Load GA4 with your Measurement ID
     gtag('js', new Date());
+    gtag('config', 'G-J8610TSKR0'); // Replace with your GA4 Measurement ID
 
-    gtag('config', 'G-J8610TSKR0');
-
-    // Function to set the user ID (customer_id)
+    // Set the user ID (customer_id) as a user property
     function setUserId(customerId) {
         gtag('set', 'user_properties', {
           'customer_id': customerId
         });
     }
 
-    // Function to send events with different parameters (now optional)
-    function sendTestEvent(eventName) {
-      gtag('event', eventName); // No need to pass customer_id here anymore
+    // Send custom events
+    function sendCustomEvent(eventName, eventParams = {}) {
+        gtag('event', eventName, eventParams);
     }
 
-    function sendPageViewWithParams(pageType) {
-      gtag('event', 'page_view', {
-        'page_location': location.href,
-        'page_path': location.pathname,
-        'page_title': document.title,
-        'page_type': pageType
-      });
-    }
-
-    // Set the user ID when the page loads (you'd get this dynamically in a real app)
-    setUserId('12345'); // Set a default customer ID for testing
-    sendPageViewWithParams('landing_page');
-
+    // Set the customer ID when the page loads
+    document.addEventListener("DOMContentLoaded", function() {
+        const customerId = '6666'; // Replace with dynamic logic in a real application
+        setUserId(customerId);
+        sendCustomEvent('landing_page_view', {
+            'page_type': 'landing_page'
+        });
+    });
   </script>
 </head>
 <body>
   <h1>Welcome to the GA4 Test Site</h1>
   <p>This is a test website for Google Analytics 4.</p>
 
-  <button onclick="sendTestEvent('button_click_gold');">Test Button</button><br>
-    <button onclick="sendPageViewWithParams('home_page')">Send page view with home page parameter</button><br>
+  <button onclick="sendCustomEvent('button_click_gold', { 'button_color': 'gold', 'user_action': 'clicked_gold_button' });">
+    Test Button (Gold)
+  </button><br>
 
+  <button onclick="sendCustomEvent('contact_us_button_click', { 'button_name': 'Contact Us', 'user_action': 'clicked_contact_us' });">
+    Contact Us Button
+  </button><br>
+
+  <button onclick="sendCustomEvent('newsletter_signup_click', { 'action_type': 'signup', 'source': 'homepage' });">
+    Newsletter Signup
+  </button><br>
+
+  <button onclick="sendCustomEvent('product_view', { 'product_id': 'P123', 'product_name': 'Test Product' });">
+    View Product
+  </button><br>
 </body>
 </html>
-
-<!-- // Get the customer ID from your application (e.g., from a data layer, cookie, or server-side rendering).
-const customerId = getCustomerId(); // Replace getCustomerId() with your actual logic
-
-// Add the customer ID to the event
-<button onclick="gtag('event', 'test_button_click', { 'customer_id': customerId, 'user_tier': 'Gold' });">Test Button</button> -->
