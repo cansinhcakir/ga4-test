@@ -12,22 +12,17 @@
     gtag('js', new Date());
     gtag('config', 'G-J8610TSKR0'); // Replace with your GA4 Measurement ID
 
-    // Set the user ID (customer_id) as a user property
-    function setUserId(customerId) {
-        gtag('set', 'user_properties', {
-          'customer_id': customerId
-        });
-    }
+    // Set the customer ID globally
+    const customerId = '12345'; // Replace with dynamic logic in a real application
 
-    // Send custom events
+    // Send custom events with customer_id explicitly included
     function sendCustomEvent(eventName, eventParams = {}) {
+        eventParams['customer_id'] = customerId; // Add customer_id to every event
         gtag('event', eventName, eventParams);
     }
 
-    // Set the customer ID when the page loads
+    // Trigger a custom event when the page loads
     document.addEventListener("DOMContentLoaded", function() {
-        const customerId = '6666'; // Replace with dynamic logic in a real application
-        setUserId(customerId);
         sendCustomEvent('landing_page_view', {
             'page_type': 'landing_page'
         });
