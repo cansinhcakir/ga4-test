@@ -10,13 +10,16 @@
 
     gtag('config', 'G-J8610TSKR0');
 
-    // Function to send events with different parameters
-    function sendTestEvent(customerId, userTier, eventName) {
-      gtag('event', eventName, {
-        'customer_id': customerId,
-        'user_tier': userTier,
-        'item_category': 'test category'
-      });
+    // Function to set the user ID (customer_id)
+    function setUserId(customerId) {
+        gtag('set', 'user_properties', {
+          'customer_id': customerId
+        });
+    }
+
+    // Function to send events with different parameters (now optional)
+    function sendTestEvent(eventName) {
+      gtag('event', eventName); // No need to pass customer_id here anymore
     }
 
     function sendPageViewWithParams(pageType) {
@@ -28,20 +31,18 @@
       });
     }
 
+    // Set the user ID when the page loads (you'd get this dynamically in a real app)
+    setUserId('12345'); // Set a default customer ID for testing
+    sendPageViewWithParams('landing_page');
+
   </script>
 </head>
 <body>
   <h1>Welcome to the GA4 Test Site</h1>
   <p>This is a test website for Google Analytics 4.</p>
 
-  <button onclick="sendTestEvent('12345', 'Gold', 'button_click_gold');">Test Button (Gold User)</button><br>
-  <button onclick="sendTestEvent('67890', 'Silver', 'button_click_silver');">Test Button (Silver User)</button><br>
+  <button onclick="sendTestEvent('button_click_gold');">Test Button</button><br>
     <button onclick="sendPageViewWithParams('home_page')">Send page view with home page parameter</button><br>
-    <button onclick="sendPageViewWithParams('product_page')">Send page view with product page parameter</button><br>
-
-  <script>
-    sendPageViewWithParams('landing_page')
-  </script>
 
 </body>
 </html>
