@@ -2,36 +2,20 @@
 <html>
 <head>
   <title>GA4 Test Site w Tag Manager</title>
-  <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-PTTJZ98V');</script>
-  <!-- End Google Tag Manager -->
-</head>
+  </head>
 
 
 <body>
-  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTTJZ98V"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  <button onclick="sendCustomEvent('all_purpose_button_click', { 'button_text': this.textContent, 'user_action': 'clicked_button' });">
+    Click Me!
+  </button>
 
-  <button onclick="sendCustomEvent('button_click_gold', { 'button_color': 'gold', 'user_action': 'clicked_gold_button' });">
-    Test Button (Gold)
-  </button><br>
-
-  <button onclick="sendCustomEvent('contact_us_button_click', { 'button_name': 'Contact Us', 'user_action': 'clicked_contact_us' });">
-    Contact Us Button
-  </button><br>
-
-  <button onclick="sendCustomEvent('newsletter_signup_click', { 'action_type': 'signup', 'source': 'homepage' });">
-    Newsletter Signup
-  </button><br>
-
-  <button onclick="sendCustomEvent('product_view', { 'product_id': 'P123', 'product_name': 'Test Product' });">
-    View Product
-  </button><br>
 </body>
 </html>
