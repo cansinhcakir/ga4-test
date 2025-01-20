@@ -2,36 +2,21 @@
 <html>
 <head>
   <title>GA4 Test Site</title>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8610TSKR0"></script>
-  <script>
-    // Initialize the dataLayer
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-
-    // Load GA4 with your Measurement ID
-    gtag('js', new Date());
-    gtag('config', 'G-J8610TSKR0'); // Replace with your GA4 Measurement ID
-
-    // Set the customer ID globally
-    const customerId = '12345'; // Replace with dynamic logic in a real application
-
-    // Send custom events with customer_id explicitly included
-    function sendCustomEvent(eventName, eventParams = {}) {
-        eventParams['customer_id'] = customerId; // Add customer_id to every event
-        gtag('event', eventName, eventParams);
-    }
-
-    // Trigger a custom event when the page loads
-    document.addEventListener("DOMContentLoaded", function() {
-        sendCustomEvent('landing_page_view', {
-            'page_type': 'landing_page'
-        });
-    });
-  </script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PTTJZ98V');</script>
+  <!-- End Google Tag Manager -->
 </head>
+
+
 <body>
-  <h1>Welcome to the GA4 Test Site</h1>
-  <p>This is a test website for Google Analytics 4.</p>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTTJZ98V"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <button onclick="sendCustomEvent('button_click_gold', { 'button_color': 'gold', 'user_action': 'clicked_gold_button' });">
     Test Button (Gold)
