@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GA4 Test Site with Tag Manager</title>
+  <title>Goo</title>
 
-  <script>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({ 'user_id': 42});
-      w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-PTTJZ98V');
-  </script>
-
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PTTJZ98V');</script>
   <script>
     dataLayer = window.dataLayer || [];
   </script>
 
 </head>
 <body>
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTTJZ98V"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
+  
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTTJZ98V"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <h1>GA4 Test Site with GTM</h1>
   <p>Click the button below to send a custom event through GTM.</p>
 
-  <button onclick="sendCustomEvent('all_purpose_button_click', { 'button_text': this.textContent, 'user_action': 'clicked_button' });">
-    Click Me!
-  </button>
+
+  <div class="button_div">
+    <button class="button_class">Click Me!</button>
+  </div>
 
 </body>
 </html>
