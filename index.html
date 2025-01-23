@@ -2,11 +2,11 @@
 <html>
 <head>
   <title>GA4 Test Site with Tag Manager</title>
-  
-  <!-- Google Tag Manager Script -->
+
   <script>
     (function(w, d, s, l, i) {
       w[l] = w[l] || [];
+      w[l].push({ 'user_id': 'YOUR_USER_ID' });
       w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
       var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s),
@@ -16,36 +16,24 @@
       f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-PTTJZ98V');
   </script>
-  <!-- End Google Tag Manager Script -->
+
+  <script>
+    dataLayer = window.dataLayer || [];
+  </script>
 
 </head>
 <body>
-  <!-- Google Tag Manager NoScript -->
   <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTTJZ98V" 
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTTJZ98V"
       height="0" width="0" style="display:none;visibility:hidden"></iframe>
   </noscript>
-  <!-- End Google Tag Manager NoScript -->
 
   <h1>GA4 Test Site with GTM</h1>
   <p>Click the button below to send a custom event through GTM.</p>
 
-  <!-- Custom Button for Sending Events -->
   <button onclick="sendCustomEvent('all_purpose_button_click', { 'button_text': this.textContent, 'user_action': 'clicked_button' });">
     Click Me!
   </button>
 
-  <!-- Add the JavaScript for Custom Event -->
-  <script>
-    function sendCustomEvent(eventName, parameters) {
-      // Push the event and parameters to the GTM dataLayer
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: eventName,
-        user_id: 6666,
-        ...parameters
-      });
-    }
-  </script>
 </body>
 </html>
