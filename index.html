@@ -28,16 +28,10 @@
   </div>
 
   <script>
-    dataLayer = window.dataLayer || [];
+ 
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({'event': 'page_load', 'user_id': 42});
 
-    // Add dataLayer push code to trigger event on button click
-    document.getElementById("button_id").addEventListener("click", function() {
-      window.dataLayer.push({
-        'event' : 'page_load',
-        'authentication_method' : 'email',
-        'user_id' : 42 //this should be replaced with an actual ID
-      });
-    });
   </script>
 
 </body>
