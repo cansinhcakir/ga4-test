@@ -10,6 +10,15 @@
   })(window,document,'script','dataLayer','GTM-PTTJZ98V');</script>
   <script>
     dataLayer = window.dataLayer || [];
+
+    // Add dataLayer push code to trigger event on button click
+    document.getElementById("button_id").addEventListener("click", function() {
+      window.dataLayer.push({
+        'event' : 'registration',
+        'authentication_method' : 'email',
+        'user_id' : 'abc123' //this should be replaced with an actual ID
+      });
+    });
   </script>
 
 </head>
