@@ -8,18 +8,6 @@
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-PTTJZ98V');</script>
-  <script>
-    dataLayer = window.dataLayer || [];
-
-    // Add dataLayer push code to trigger event on button click
-    document.getElementById("button_id").addEventListener("click", function() {
-      window.dataLayer.push({
-        'event' : 'button_click',
-        'authentication_method' : 'email',
-        'user_id' : 42 //this should be replaced with an actual ID
-      });
-    });
-  </script>
 
 </head>
 <body>
@@ -38,6 +26,19 @@
   <div class="button_div">
     <button class="button_class">Click Me and see nothing!</button>
   </div>
+
+  <script>
+    dataLayer = window.dataLayer || [];
+
+    // Add dataLayer push code to trigger event on button click
+    document.getElementById("button_id").addEventListener("click", function() {
+      window.dataLayer.push({
+        'event' : 'page_load',
+        'authentication_method' : 'email',
+        'user_id' : 42 //this should be replaced with an actual ID
+      });
+    });
+  </script>
 
 </body>
 </html>
