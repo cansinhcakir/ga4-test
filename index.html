@@ -14,7 +14,7 @@
     // Add dataLayer push code to trigger event on button click
     document.getElementById("button_id").addEventListener("click", function() {
       window.dataLayer.push({
-        'event' : 'registration',
+        'event' : 'button_click',
         'authentication_method' : 'email',
         'user_id' : 42 //this should be replaced with an actual ID
       });
